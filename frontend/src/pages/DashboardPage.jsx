@@ -11,6 +11,7 @@ return(
   <Navbar/>
   <div className="w-full flex flex-col lg:flex-row h-[100vh]">
     <div className="mx-4 mt-5 w-full lg:w-1/2 h-[90vh] ">
+        <h1 className="text-6xl font-bold mb-[2rem] mt-5 text-white text-center">My Budget</h1>
         <ChartComp/>
     </div>
     <div className=" mx-0 lg:mx-6 mt-5  w-full lg:w-1/2 flex flex-col">

@@ -15,7 +15,7 @@ const options = {
   pieStartAngle: 100,
   backgroundColor: '#142733',
   legend: "none",
-  pieSliceTextStyle: {color: "#f8fdfe", fontSize: 25,  bold: true },
+  pieSliceTextStyle: {color: "#f8fdfe", fontSize: 22,  bold: true },
   slices: [{color: '#1f5fe0'}, {color: 'red'}, {color: "#D6B70A"}, {color: "purple"}, {color: 'green'},{color: "violet"} ]
 };
 
@@ -28,7 +28,7 @@ return(
   data={data}
   options={options}
   width={"100%"}
-  height={"80vh"}
+  height={"70vh"}
 />
 )
 }
