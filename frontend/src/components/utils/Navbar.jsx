@@ -26,7 +26,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-bold"
       >
-        <a href="/expense" className="flex items-center hover:text-blue-500 transition-colors">
+        <a href="/add" className="flex items-center hover:text-blue-500 transition-colors">
          Add Expense
         </a>
       </Typography>

@@ -14,7 +14,7 @@ import {
 
 
  
-const TABLE_HEAD = ["Expense Description", "Amount", "Category", "Date", "", ""];
+const TABLE_HEAD = ["Expense Summary", "Amount", "Category", "Date", "", ""];
  
 const TABLE_ROWS = [
   {
@@ -47,7 +47,19 @@ const TABLE_ROWS = [
   }
 ];
  
-export function TableComp() {
+
+
+export function TableComp({setForceRefetch}) {
+ 
+   function editHandler(){
+      setForceRefetch((prev)=>!prev);
+   }
+
+  function deleteHandler(){
+      setForceRefetch((prev)=>!prev);
+   }
+   
+
   return (
     <Card className="h-fit w-full rounded-none p-0 m-0">
       <CardBody className="overflow-scroll p-0 m-0">
@@ -56,7 +68,7 @@ export function TableComp() {
             <tr>
               {TABLE_HEAD.map((head, index) => (
                 <th
-                  key={head}
+                  key={index}
                   className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50"
                 >
                   <Typography
@@ -86,7 +98,7 @@ export function TableComp() {
                     <td className={classes}>
                       <div className="flex flex-col">
                         <Typography
-                          variant="medium"
+                          variant="small"
                           color="blue-gray"
                           className="font-bold text-[1.1rem]"
                         >
@@ -97,7 +109,7 @@ export function TableComp() {
                     <td className={classes}>
                       <div className="flex flex-col">
                         <Typography
-                          variant="medium"
+                          variant="small"
                           color="blue-gray"
                           className="font-bold text-[1.1rem]"
                         >
@@ -126,14 +138,14 @@ export function TableComp() {
                     </td>
                      <td className={classes}>
                       <Tooltip content="Edit Expense">
-                        <IconButton variant="text">
+                        <IconButton variant="text" onClick={editHandler}>
                           <PencilIcon className="h-4 w-4" />
                         </IconButton>
                       </Tooltip>
                     </td>
                      <td className={classes}>
                       <Tooltip content="Delete Expense">
-                        <IconButton variant="text">
+                        <IconButton variant="text" onClick={deleteHandler}>
                           <TrashIcon className="h-4 w-4" />
                         </IconButton>
                       </Tooltip>

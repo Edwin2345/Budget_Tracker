@@ -9,7 +9,7 @@ function App() {
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<DashBoardPage/>}/>
-      <Route path="/expense" element={<AddExpensePage/>}/>
+      <Route path="/add" element={<AddExpensePage/>}/>
       <Route path="/table" element={<TablePage/>}/>
     </Routes>
   </BrowserRouter>

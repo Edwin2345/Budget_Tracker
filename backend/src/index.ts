@@ -2,6 +2,8 @@ import express = require('express');
 import { Application, Request, Response } from 'express';
 import mysql from "mysql2"
 import cors from "cors"
+const expenseRouter = require("./routes/expense");
+const summaryRouter = require("./routes/summary")
 
 require("dotenv").config();
 
@@ -24,9 +26,18 @@ app.use(express.json());
 app.use(cors());
 
 
+// Routing
+app.use("/expense", expenseRouter);
+app.use("/summary", summaryRouter)
+
+
+
+
+// TEST ROUTES
 app.get("/", (req: Request, res: Response) => {
   res.send("<h1>Hello</h1>")
 })
+
 
 app.get("/categories", (req: Request, res: Response) => {
     const q = "SELECT * FROM categories"
@@ -37,6 +48,12 @@ app.get("/categories", (req: Request, res: Response) => {
     })
 })
 
+
+
+
 app.listen(PORT, (): void => {
     console.log('SERVER IS UP ON PORT:', PORT);
 });
+
+
+export default db;
