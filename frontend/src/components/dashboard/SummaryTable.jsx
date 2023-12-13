@@ -89,9 +89,9 @@ export function SummaryTable() {
                     <td className={classes}>
                       <div className="flex flex-col">
                         <Typography
-                          variant="large"
+                          variant="small"
                           color="blue-gray"
-                          className="font-bold text-[1.1rem]"
+                          className="font-bold text-[1.15rem]"
                         >
                           {category}
                         </Typography>
@@ -100,9 +100,9 @@ export function SummaryTable() {
                     <td className={classes}>
                       <div className="flex flex-col">
                         <Typography
-                          variant="medium"
+                          variant="small"
                           color="blue-gray"
-                          className="font-bold text-[1.1rem]"
+                          className="font-bold text-[1.15rem]"
                         >
                           {total.toFixed(2)}
                         </Typography>
@@ -111,9 +111,9 @@ export function SummaryTable() {
                    <td className={classes}>
                       <div className="flex flex-col">
                         <Typography
-                          variant="medium"
+                          variant="small"
                           color="blue-gray"
-                          className="font-bold text-[1.1rem]">
+                          className="font-bold text-[1.15rem]">
                           {average.toFixed(2)}
                         </Typography>
                       </div>

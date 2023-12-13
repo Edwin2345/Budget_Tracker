@@ -1,7 +1,7 @@
 import { Chart } from "react-google-charts";
 
 const data = [
-  ["Language", "Speakers (in millions)"],
+  ["Budget Category", "Total Amount"],
   ["Household", 5.85],
   ["Transportation", 1.66],
   ["Groceries", 0.4],

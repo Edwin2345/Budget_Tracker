@@ -1,0 +1,25 @@
+BACKEND ROUTES
+###############
+
+GET /summary --> summary table data (DASHBOARD)
+GET /summary/recent --> get 4 most recent expenses (DASHBOARD)
+
+
+GET /expense  --> get all expenses 
+POST /expense --> add new expense
+
+PUT /expense/:id --> edit expense
+DELETE /expense/:id -->
+
+
+
+FRONTEND REACT ROUTER
+#######################
+
+/ --> DashboardPage
+
+/add --> AddExpensePage
+
+/edit/:id --> EditExpensePage
+
+/table --> TablePage
