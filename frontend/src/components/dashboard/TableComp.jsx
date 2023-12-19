@@ -12,55 +12,36 @@ import {
   Tooltip,
 } from "@material-tailwind/react";
 
+import categoriesArr from "../utils/catergories";
+
 
  
 const TABLE_HEAD = ["Expense Summary", "Amount", "Category", "Date", "", ""];
  
-const TABLE_ROWS = [
-  {
-    job: "Manager",
-    value: 12.34,
-    org: "Organization",
-    online: true,
-    date: "23/04/18",
-  },
-  {
-    job: "Executive",
-    value: 122.34,
-    org: "Projects",
-    online: false,
-    date: "19/09/17",
-  },
-  {
-    job: "Programator",
-    value: 124.34,
-    org: "Developer",
-    online: true,
-    date: "24/12/08",
-  },
-  {
-    job: "Manager",
-    value: 9.56,
-    org: "Executive",
-    online: false,
-    date: "04/10/21",
-  }
-];
+
  
 
-
-export function TableComp({setForceRefetch}) {
+export function TableComp({tableData, setDeleteId, handleOpen}) {
  
+
+   //redirect to edit page with id, summary, amount, category state
    function editHandler(){
-      setForceRefetch((prev)=>!prev);
+      
    }
 
-  function deleteHandler(){
-      setForceRefetch((prev)=>!prev);
+   function deleteHandler(id){
+       setDeleteId(id);
+       handleOpen();
    }
+
+
+
+
+
    
 
   return (
+  <>
     <Card className="h-fit w-full rounded-none p-0 m-0">
       <CardBody className="overflow-scroll p-0 m-0">
         <table className="mt-4 w-full min-w-max table-auto text-left">
@@ -86,23 +67,23 @@ export function TableComp({setForceRefetch}) {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(
-              ({ job, value, online, date }, index) => {
-                const isLast = index === TABLE_ROWS.length - 1;
+            {tableData.map(
+              ({ id, summary, amount, created_on, category }, index) => {
+                const isLast = index ===  tableData.length - 1;
                 const classes = isLast
                   ? "p-2"
                   : "p-2 border-b border-blue-gray-50";
  
                 return (
-                  <tr key={date}>
+                  <tr key={id}>
                     <td className={classes}>
                       <div className="flex flex-col">
                         <Typography
                           variant="small"
                           color="blue-gray"
-                          className="font-bold text-[1.1rem]"
+                          className="font-bold text-[1.1rem] text-ellipsis"
                         >
-                          {job}
+                          {summary}
                         </Typography>
                       </div>
                     </td>
@@ -113,7 +94,7 @@ export function TableComp({setForceRefetch}) {
                           color="blue-gray"
                           className="font-bold text-[1.1rem]"
                         >
-                          {value}
+                          {amount.toFixed(2)}
                         </Typography>
                       </div>
                     </td>
@@ -122,8 +103,8 @@ export function TableComp({setForceRefetch}) {
                         <Chip
                           variant="ghost"
                           size="sm"
-                          value={online ? "online" : "offline"}
-                          color={online ? "green" : "blue-gray"}
+                          value={categoriesArr[category-1].value}
+                          color={categoriesArr[category-1].color}
                         />
                       </div>
                     </td>
@@ -133,7 +114,7 @@ export function TableComp({setForceRefetch}) {
                         color="blue-gray"
                         className="font-bold text-[1.1rem]"
                       >
-                        {date}
+                        {created_on.slice(0,10)}
                       </Typography>
                     </td>
                      <td className={classes}>
@@ -145,7 +126,7 @@ export function TableComp({setForceRefetch}) {
                     </td>
                      <td className={classes}>
                       <Tooltip content="Delete Expense">
-                        <IconButton variant="text" onClick={deleteHandler}>
+                        <IconButton variant="text" onClick={() => deleteHandler(id)}>
                           <TrashIcon className="h-4 w-4" />
                         </IconButton>
                       </Tooltip>
@@ -158,6 +139,7 @@ export function TableComp({setForceRefetch}) {
         </table>
       </CardBody>
     </Card>
+  </>
   );
 }
 

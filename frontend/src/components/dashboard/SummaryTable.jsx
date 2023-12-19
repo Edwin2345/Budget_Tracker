@@ -11,47 +11,12 @@ import {
  
 const TABLE_HEAD = ["Category", "Total Amount", "Average Expense"];
  
-const TABLE_ROWS = [
-  {
-   id: 1,
-   category: "Household",
-   total: 15.67,
-   average: 12.30,
-  },
- {
-   id: 2,
-   category: "Transportation",
-   total: 156.78,
-   average: 10.30,
-  },
- {
-   id: 3,
-   category: "Groceries",
-   total: 3.68,
-   average: 1.73,
-  },
- {
-   id: 4,
-   category: "Personal",
-   total: 2234.56,
-   average: 12.34,
-  },
- {
-   id: 5,
-   category: "Savings",
-   total: 457.23,
-   average: 99.43,
-  },
- {
-   id: 6,
-   category: "Other",
-   total: 12.78,
-   average: 69.12,
-  },
+export function SummaryTable({summaryData}) {
 
-];
- 
-export function SummaryTable() {
+  //Calculate total
+  const totalSum  = summaryData.reduce((sum, value) => sum + value.total_amount, 0);
+  const finalData =  [...summaryData, {category: "Total", total_amount: totalSum, average_expense: (totalSum/6)}]
+
   return (
     <Card className="h-fit rounded-none p-0 m-0">
       <CardBody className="overflow-scroll p-0 m-0">
@@ -66,7 +31,7 @@ export function SummaryTable() {
                   <Typography
                     variant="h5"
                     color="black"
-                    className="flex items-center justify-between gap-2 font-bold leading-none "
+                    className="flex items-center justify-between gap-2 font-bold leading-none text-center"
                   >
                     {head}{" "}
                     <ChevronUpDownIcon strokeWidth={3} className="h-5 w-5" />
@@ -77,44 +42,45 @@ export function SummaryTable() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(
-              ({ category, total, average}, index) => {
-                const isLast = index === TABLE_ROWS.length - 1;
+            {finalData.map(
+              ({ category, total_amount, average_expense}, index) => {
+                const isLast = index === finalData.length - 1;
                 const classes = isLast
-                  ? "p-2"
-                  : "p-2 border-b border-blue-gray-50";
+                  ? "p-2 border-b border-blue-gray-50 font-extrabold text-[1.12rem]"
+                  : "p-2 border-b border-blue-gray-50 font-bold text-[1.12rem]";
  
                 return (
                   <tr key={category}>
-                    <td className={classes}>
+                    <td>
                       <div className="flex flex-col">
                         <Typography
                           variant="small"
                           color="blue-gray"
-                          className="font-bold text-[1.15rem]"
+                          className={classes}
                         >
                           {category}
                         </Typography>
                       </div>
                     </td>
-                    <td className={classes}>
+                    <td>
                       <div className="flex flex-col">
                         <Typography
                           variant="small"
                           color="blue-gray"
-                          className="font-bold text-[1.15rem]"
+                          className={classes}
                         >
-                          {total.toFixed(2)}
+                          {total_amount.toFixed(2)}
                         </Typography>
                       </div>
                     </td>
-                   <td className={classes}>
+                   <td>
                       <div className="flex flex-col">
                         <Typography
                           variant="small"
                           color="blue-gray"
-                          className="font-bold text-[1.15rem]">
-                          {average.toFixed(2)}
+                          className={classes}
+                        >
+                          {average_expense.toFixed(2)}
                         </Typography>
                       </div>
                     </td>

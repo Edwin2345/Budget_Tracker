@@ -1,12 +1,12 @@
 
 
 const categoriesArr = [
-{id: 1, value: "Household", color: ""},
-{id: 2, value: "Transportation", color: ""},
-{id: 3, value: "Groceries", color: ""},
-{id: 4, value: "Personal", color: ""},
-{id: 5, value: "Savings", color: ""},
-{id: 6, value: "Other", color: ""},
+{id: 1, value: "Household", color: 'blue'},
+{id: 2, value: "Transportation", color: 'red'},
+{id: 3, value: "Groceries", color: "indigo"},
+{id: 4, value: "Personal", color: "purple"},
+{id: 5, value: "Savings", color: 'green'},
+{id: 6, value: "Other", color: "teal"},
 ];
 
 export default categoriesArr;
