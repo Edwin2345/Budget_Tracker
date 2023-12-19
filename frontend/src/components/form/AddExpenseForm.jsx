@@ -43,7 +43,7 @@ function AddExpenseForm(){
 
 
     return(
-        <Card color="white" className="p-6 w-[80%] h-[80%]" shadow={false}>
+        <Card color="white" className="p-6 w-[80%] h-[90%]" shadow={false}>
         <form className="mt-8 mb-2" onSubmit={submitHandler}>
             <div className="mb-1 flex flex-col gap-6">
             <Typography variant="h2" color="blue-gray" className="mb-4">
@@ -86,7 +86,7 @@ function AddExpenseForm(){
                 })}
             </select>
             </div>
-            <button className="mt-6 text-[1.1rem] text-white p-3 rounded-md bg-green-700" >
+            <button className="my-6 text-[1.1rem] text-white p-3 rounded-md bg-green-700" >
              Create
             </button>
         </form>

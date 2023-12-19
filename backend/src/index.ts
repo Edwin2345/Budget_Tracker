@@ -31,8 +31,6 @@ app.use("/expense", expenseRouter);
 app.use("/summary", summaryRouter)
 
 
-
-
 // TEST ROUTES
 app.get("/", (req: Request, res: Response) => {
   res.send("<h1>Hello</h1>")
