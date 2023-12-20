@@ -2,44 +2,61 @@ import {Card,Typography,} from "@material-tailwind/react";
 import categoriesArr from "../utils/catergories";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
+import { useEffect } from "react";
 
-function AddExpenseForm(){
+function EditExpenseForm(){
   
-    const navigate = useNavigate();
+const navigate = useNavigate();
 
-    const [expense, setExpense] = useState({
-        summary: "",
-        amount: '',
-        category: 1,
-    })
+const [expense, setExpense] = useState({
+    summary: "",
+    amount: '',
+    category: 1,
+})
+
+const {id} = useParams();
+
+useEffect(()=>{
+  async function fetchExpense(){
+    try{
+       const resp = await axios.get(`http://localhost:8800/expense/${id}`);
+     setExpense((e)=>{return {...e, summary: resp.data[0].summary, amount: resp.data[0].amount, category: resp.data[0].category}});
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+  fetchExpense();
+},[])
 
 
-    function changeHandler(evt){
-    setExpense( (prev) => {
-        let newValue = evt.target.value;
 
-        if(evt.target.name === "amount" || evt.target.name === "category"){
-           newValue = parseFloat(evt.target.value)
-        }
- 
-        return  {...prev, [evt.target.name]: newValue}
-    })
+function changeHandler(evt){
+setExpense( (prev) => {
+    let newValue = evt.target.value;
+
+    if(evt.target.name === "amount" || evt.target.name === "category"){
+    newValue = parseFloat(evt.target.value)
     }
 
-    async function submitHandler(evt){
+    return  {...prev, [evt.target.name]: newValue}
+})
+}
 
-        evt.preventDefault();
-        setExpense({summary: "", amount: '', category: 1});
+async function submitHandler(evt){
 
-        try{
-          await axios.post("http://localhost:8800/expense", expense);
-          navigate("/")
-        }
-        catch(e){
-           console.log(e);
-        } 
+    evt.preventDefault();
+    setExpense({summary: "", amount: '', category: 1});
+
+    try{
+     await axios.put(`http://localhost:8800/expense/${id}`, expense);
+     navigate("/")
     }
+    catch(e){
+    console.log(e);
+    } 
+}
 
 
     return(
@@ -47,7 +64,7 @@ function AddExpenseForm(){
         <form className="mt-8 mb-2" onSubmit={submitHandler}>
             <div className="mb-1 flex flex-col gap-6">
             <Typography variant="h2" color="blue-gray" className="mb-4">
-                Add an Expense
+                Edit an Expense
             </Typography>
             <Typography variant="h5" color="blue-gray">
                 Expense Summary
@@ -86,8 +103,8 @@ function AddExpenseForm(){
                 })}
             </select>
             </div>
-            <button className="my-6 text-[1.1rem] text-white p-3 rounded-md bg-green-700" >
-             Create
+            <button className="my-6 text-[1.1rem] text-white p-3 rounded-md bg-blue-700" >
+             Edit
             </button>
         </form>
         </Card>
@@ -95,4 +112,4 @@ function AddExpenseForm(){
 
 }
 
-export default AddExpenseForm;
+export default EditExpenseForm;

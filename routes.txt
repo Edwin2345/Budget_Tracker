@@ -6,6 +6,7 @@ GET /summary/recent --> get 4 most recent expenses (DASHBOARD)
 
 
 GET /expense  --> get all expenses 
+GET /expense/:id --> get one expense
 POST /expense --> add new expense
 
 PUT /expense/:id --> edit expense

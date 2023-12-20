@@ -13,6 +13,7 @@ import {
 } from "@material-tailwind/react";
 
 import categoriesArr from "../utils/catergories";
+import { useNavigate } from "react-router-dom";
 
 
  
@@ -22,11 +23,12 @@ const TABLE_HEAD = ["Expense Summary", "Amount", "Category", "Date", "", ""];
  
 
 export function TableComp({tableData, setDeleteId, handleOpen}) {
- 
+   
+  const navigate = useNavigate();
 
-   //redirect to edit page with id, summary, amount, category state
-   function editHandler(){
-      
+   //redirect to edit page with id
+   function editHandler(id, summary, amount, category){
+      navigate(`/edit/${id}`, {state: {summary, amount, category}})
    }
 
    function deleteHandler(id){
@@ -34,11 +36,6 @@ export function TableComp({tableData, setDeleteId, handleOpen}) {
        handleOpen();
    }
 
-
-
-
-
-   
 
   return (
   <>
@@ -119,7 +116,7 @@ export function TableComp({tableData, setDeleteId, handleOpen}) {
                     </td>
                      <td className={classes}>
                       <Tooltip content="Edit Expense">
-                        <IconButton variant="text" onClick={editHandler}>
+                        <IconButton variant="text" onClick={() => editHandler(id, summary, amount, category)}>
                           <PencilIcon className="h-4 w-4" />
                         </IconButton>
                       </Tooltip>
