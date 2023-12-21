@@ -3,6 +3,7 @@ BACKEND ROUTES
 
 GET /summary --> summary table data (DASHBOARD)
 GET /summary/recent --> get 4 most recent expenses (DASHBOARD)
+GET /summary/search?summary=""  --> search by expense summary
 
 
 GET /expense  --> get all expenses 

@@ -1,6 +1,4 @@
-import {
-  ChevronUpDownIcon,
-} from "@heroicons/react/24/outline";
+
 import {
   Card,
   Typography,
@@ -34,8 +32,6 @@ export function SummaryTable({summaryData}) {
                     className="flex items-center justify-between gap-2 font-bold leading-none text-center"
                   >
                     {head}{" "}
-                    <ChevronUpDownIcon strokeWidth={3} className="h-5 w-5" />
-               
                   </Typography>
                 </th>
               ))}

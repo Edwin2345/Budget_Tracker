@@ -1,6 +1,5 @@
 import {
   TrashIcon,
-  ChevronUpDownIcon,
 } from "@heroicons/react/24/outline";
 import { PencilIcon} from "@heroicons/react/24/solid";
 import {
@@ -55,9 +54,6 @@ export function TableComp({tableData, setDeleteId, handleOpen}) {
                     className="flex items-center justify-between gap-2 font-bold leading-none "
                   >
                     {head}{" "}
-                    {index < TABLE_HEAD.length - 2 && (
-                      <ChevronUpDownIcon strokeWidth={3} className="h-5 w-5" />
-                    )}
                   </Typography>
                 </th>
               ))}
