@@ -68,11 +68,11 @@ return(
  <div className="app">
   <Navbar/>
   <div className="w-full flex flex-col lg:flex-row h-[100vh]">
-    <div className="mx-4 mt-5 w-full lg:w-[50%] h-[90vh] ">
+    <div className="mx-4 mt-5 w-full lg:w-[40%] h-[90vh] ">
         <h1 className="text-5xl font-bold mb-[2rem] mt-5 text-white text-center">My Budget</h1>
         <ChartComp summaryData={summaryData}/>
     </div>
-    <div className=" mx-0 lg:mx-6 mt-5  w-full lg:w-[50%] flex flex-col">
+    <div className=" mx-0 lg:mx-6 mt-5  w-full lg:w-[60%] flex flex-col">
      <div className="bg-black pt-2 pb-[2rem] px-6 mt-5"> 
        <h1 className="text-4xl font-bold mb-[2rem] mt-5 text-white">Expense Totals</h1>
        <SummaryTable summaryData={summaryData}/>
