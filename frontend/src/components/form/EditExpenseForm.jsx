@@ -12,6 +12,7 @@ const navigate = useNavigate();
 const [expense, setExpense] = useState({
     summary: "",
     amount: '',
+    expense_date: "",
     category: 1,
 })
 
@@ -20,8 +21,11 @@ const {id} = useParams();
 useEffect(()=>{
   async function fetchExpense(){
     try{
-       const resp = await axios.get(`http://localhost:8800/expense/${id}`);
-     setExpense((e)=>{return {...e, summary: resp.data[0].summary, amount: resp.data[0].amount, category: resp.data[0].category}});
+     const resp = await axios.get(`http://localhost:8800/expense/${id}`);
+     console.log(resp);
+     setExpense((e)=>{
+     return {...e, summary: resp.data[0].summary, amount: resp.data[0].amount, expense_date: resp.data[0].expense_date.slice(0,10) ,category: resp.data[0].category
+     }});
     }
     catch(e){
       console.log(e);
@@ -51,7 +55,7 @@ async function submitHandler(evt){
 
     try{
      await axios.put(`http://localhost:8800/expense/${id}`, expense);
-     navigate("/")
+     navigate(-1);
     }
     catch(e){
     console.log(e);
@@ -62,7 +66,7 @@ async function submitHandler(evt){
     return(
         <Card color="white" className="p-6 w-[80%] h-[90%]" shadow={false}>
         <form className="mt-8 mb-2" onSubmit={submitHandler}>
-            <div className="mb-1 flex flex-col gap-6">
+            <div className="mb-1 flex flex-col gap-3">
             <Typography variant="h2" color="blue-gray" className="mb-4">
                 Edit an Expense
             </Typography>
@@ -93,6 +97,17 @@ async function submitHandler(evt){
                 onChange = {changeHandler}
                 value={expense.amount}
                 className="border-2 border-black p-2 rounded-md mb-2 font-bold text-black"
+            /> 
+            <Typography variant="h5" color="blue-gray">
+                Expense Date
+            </Typography>
+            <input
+                required
+                name="expense_date"
+                type="date"
+                onChange = {changeHandler}
+                value={expense.expense_date}
+                className="border-2 border-black p-2 rounded-md mb-2 font-bold text-black"
             />
             <Typography variant="h5" color="blue-gray">
                 Category
@@ -102,10 +117,10 @@ async function submitHandler(evt){
                 return <option key={c.id} value={c.id}>{c.value}</option>
                 })}
             </select>
-            </div>
-            <button className="my-6 text-[1.1rem] text-white p-3 rounded-md bg-blue-700" >
-             Edit
+            <button className="my-3 text-[1.2rem] font-bold text-white p-3 rounded-md bg-blue-700" >
+             Update Expense
             </button>
+         </div>
         </form>
         </Card>
     )

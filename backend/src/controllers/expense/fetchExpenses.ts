@@ -3,7 +3,7 @@ import db from '../..';
 
 async function fetchExpenses(req: Request, res: Response){
    try{
-     const q = "SELECT * FROM expenses ORDER BY created_on";
+     const q = "SELECT * FROM expenses ORDER BY expense_date DESC";
 
       db.query(q, (err, data)=>{
           if(err) console.log(res.json(err));

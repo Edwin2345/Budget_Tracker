@@ -4,11 +4,11 @@ import db from '../..';
 async function updateExpense(req: Request, res: Response){
    try{
      const {id} = req.params;
-     const {summary, amount, category} = req.body;
+     const {summary, amount, expense_date, category} = req.body;
     
-     const q = "UPDATE expenses SET summary = (?), amount = (?), category = (?), created_on = now() WHERE id = (?);"
+     const q = "UPDATE expenses SET summary = (?), amount = (?), expense_date = (?), category = (?)  WHERE id = (?);"
      
-     db.query(q,[summary, amount, category, id], (err, data)=>{
+     db.query(q,[summary, amount,expense_date, category, id], (err, data)=>{
           if(err) console.log(res.json(err));
           return res.json(data);
      })

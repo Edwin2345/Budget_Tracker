@@ -3,7 +3,7 @@ import db from '../..';
 
 async function fetchRecent(req: Request, res: Response){
    try{
-     const q = "SELECT * FROM expenses ORDER BY created_on DESC LIMIT 3;"
+     const q = "SELECT * FROM expenses ORDER BY expense_date DESC LIMIT 3;"
       
      db.query(q, (err, data)=>{
           if(err) console.log(res.json(err));
