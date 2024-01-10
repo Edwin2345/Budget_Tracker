@@ -13,13 +13,15 @@ import {
 
 
 
+
 function DashBoardPage(){
 
 const [summaryData, setSummaryData] = useState([]);
 const [recentData, setRecentData] = useState([]);
 
 
- async function fetchData(){
+
+async function fetchData(){
    try{
      const respSummary = await axios.get("http://localhost:8800/summary");
      const respRecent = await  axios.get("http://localhost:8800/summary/recent");
@@ -35,12 +37,12 @@ const [recentData, setRecentData] = useState([]);
    catch(e){
      console.log(e);
    }
- }
-
+}
 
 useEffect(()=>{
   fetchData();
 },[])
+
 
 
 

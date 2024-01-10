@@ -10,11 +10,10 @@ CREATE TABLE expenses(
   id INT PRIMARY KEY AUTO_INCREMENT,
   summary VARCHAR(30) NOT NULL,
   amount DECIMAL(7,2) NOT NULL,
-  created_on TIMESTAMP DEFAULT NOW(),
+  expense_date DATE NOT NULL,
   category INT NOT NULL,
   FOREIGN KEY(category) REFERENCES categories(id)  ON DELETE CASCADE
 );
-
 
 
 DELETE FROM expenses;

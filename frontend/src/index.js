@@ -3,7 +3,7 @@ import "./index.css"
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.js'
-import { ThemeProvider } from "@material-tailwind/react";
+import { ThemeProvider} from "@material-tailwind/react";
 
 
 // 2) Get refence to root div

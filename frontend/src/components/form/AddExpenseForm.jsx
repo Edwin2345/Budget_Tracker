@@ -11,6 +11,7 @@ function AddExpenseForm(){
     const [expense, setExpense] = useState({
         summary: "",
         amount: '',
+        expense_date: "",
         category: 1,
     })
 
@@ -30,11 +31,11 @@ function AddExpenseForm(){
     async function submitHandler(evt){
 
         evt.preventDefault();
-        setExpense({summary: "", amount: '', category: 1});
+        setExpense({summary: "", amount: '', expense_date:"", category: 1});
 
         try{
           await axios.post("http://localhost:8800/expense", expense);
-          navigate("/")
+          navigate("/");
         }
         catch(e){
            console.log(e);
@@ -45,7 +46,7 @@ function AddExpenseForm(){
     return(
         <Card color="white" className="p-6 w-[80%] h-[90%]" shadow={false}>
         <form className="mt-8 mb-2" onSubmit={submitHandler}>
-            <div className="mb-1 flex flex-col gap-6">
+            <div className="mb-1 flex flex-col gap-3">
             <Typography variant="h2" color="blue-gray" className="mb-4">
                 Add an Expense
             </Typography>
@@ -60,7 +61,7 @@ function AddExpenseForm(){
                 onChange = {changeHandler}
                 value={expense.summary}
                 className="border-2 border-black p-2 rounded-md mb-2 font-bold text-black"
-            />
+            /> 
             <Typography variant="h5" color="blue-gray">
                 Amount
             </Typography>
@@ -77,6 +78,17 @@ function AddExpenseForm(){
                 value={expense.amount}
                 className="border-2 border-black p-2 rounded-md mb-2 font-bold text-black"
             />
+           <Typography variant="h5" color="blue-gray">
+                Expense Date
+            </Typography>
+            <input
+                required
+                name="expense_date"
+                type="date"
+                onChange = {changeHandler}
+                value={expense.expense_date}
+                className="border-2 border-black p-2 rounded-md mb-2 font-bold text-black"
+            />
             <Typography variant="h5" color="blue-gray">
                 Category
             </Typography>
@@ -85,10 +97,10 @@ function AddExpenseForm(){
                 return <option key={c.id} value={c.id}>{c.value}</option>
                 })}
             </select>
-            </div>
-            <button className="my-6 text-[1.1rem] text-white p-3 rounded-md bg-green-700" >
-             Create
+            <button className="my-3 rounded-md text-[1.2rem] font-bold text-white p-3  bg-green-700" >
+             Create Expense
             </button>
+         </div>
         </form>
         </Card>
     )

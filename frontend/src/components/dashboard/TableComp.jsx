@@ -26,8 +26,8 @@ export function TableComp({tableData, setDeleteId, handleOpen}) {
   const navigate = useNavigate();
 
    //redirect to edit page with id
-   function editHandler(id, summary, amount, category){
-      navigate(`/edit/${id}`, {state: {summary, amount, category}})
+   function editHandler(id, summary, amount, expense_date, category){
+      navigate(`/edit/${id}`, {state: {summary, amount,expense_date, category}})
    }
 
    function deleteHandler(id){
@@ -61,7 +61,7 @@ export function TableComp({tableData, setDeleteId, handleOpen}) {
           </thead>
           <tbody>
             {tableData.map(
-              ({ id, summary, amount, created_on, category }, index) => {
+              ({ id, summary, amount,expense_date, category }, index) => {
                 const isLast = index ===  tableData.length - 1;
                 const classes = isLast
                   ? "p-2"
@@ -107,12 +107,12 @@ export function TableComp({tableData, setDeleteId, handleOpen}) {
                         color="blue-gray"
                         className="font-bold text-[1.1rem]"
                       >
-                        {created_on.slice(0,10)}
+                        {expense_date.slice(0,10)}
                       </Typography>
                     </td>
                      <td className={classes}>
                       <Tooltip content="Edit Expense">
-                        <IconButton variant="text" onClick={() => editHandler(id, summary, amount, category)}>
+                        <IconButton variant="text" onClick={() => editHandler(id, summary, amount,expense_date, category)}>
                           <PencilIcon className="h-4 w-4" />
                         </IconButton>
                       </Tooltip>
