@@ -1,5 +1,5 @@
 # Budget_Tracker
-An application made with react, node and mysql to manage and visualize personal budgets <br/>
+An application made with React, Node, Express and MySQL to manage and visualize personal budgets <br/>
 Features an interactive piechart, and a table view to help you keep track of your expenses
 
 ## Dashboard Page (with summary table and interactive pie chart)
@@ -9,5 +9,5 @@ Features an interactive piechart, and a table view to help you keep track of you
 ![image](https://github.com/Edwin2345/Budget_Tracker/assets/112472516/7debbe3f-78a5-40b1-9494-b22eea4fe402)
 <br/>  
 ## Add and Edit Expense Pages
-![image](https://github.com/Edwin2345/Budget_Tracker/assets/112472516/b64ee0c9-f2a7-4f4f-960f-ed3ef2318750)
-![image](https://github.com/Edwin2345/Budget_Tracker/assets/112472516/cd472468-989e-49da-a944-e0dafb55e455)
+![image](https://github.com/Edwin2345/Budget_Tracker/assets/112472516/aa4febb7-4ae1-414b-98da-b60305171f73)
+
