@@ -71,7 +71,7 @@ return(
   <Navbar/>
   <div className="w-full flex flex-col lg:flex-row h-[100vh]">
     <div className="mx-4 mt-5 w-full lg:w-[40%] h-[90vh] ">
-        <h1 className="text-5xl font-bold mb-[2rem] mt-5 text-white text-center">My Budget</h1>
+        <h1 className="text-5xl font-bold mb-[2rem] mt-5 text-white text-center">Current Budget</h1>
         <ChartComp summaryData={summaryData}/>
     </div>
     <div className=" mx-0 lg:mx-6 mt-5  w-full lg:w-[60%] flex flex-col">
